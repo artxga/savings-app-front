@@ -33,7 +33,7 @@ const monthOptions = computed(() => {
   
   for (let i = 0; i < 12; i++) {
     const value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-    const label = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' }).format(d)
+    const label = new Intl.DateTimeFormat('es-PE', { month: 'long', year: 'numeric' }).format(d)
     const capitalizedLabel = label.charAt(0).toUpperCase() + label.slice(1)
     
     options.push({ value, label: capitalizedLabel })
@@ -78,7 +78,7 @@ const contextYear = computed(() => {
 })
 
 const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(value)
+  return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
 }
 </script>
 

@@ -16,11 +16,11 @@ const sortedTransactions = computed(() => {
 })
 
 const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(value)
+  return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
 }
 
 const formatDate = (dateString: string) => {
-  return new Intl.DateTimeFormat('es-ES', { day: '2-digit', month: 'short' }).format(new Date(dateString))
+  return new Intl.DateTimeFormat('es-PE', { day: '2-digit', month: 'short' }).format(new Date(dateString))
 }
 </script>
 

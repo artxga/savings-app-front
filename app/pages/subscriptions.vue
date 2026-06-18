@@ -72,7 +72,7 @@ const mostExpensive = computed(() => {
 })
 
 const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(value)
+  return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
 }
 </script>
 
@@ -168,7 +168,7 @@ const formatCurrency = (value: number) => {
               <div>
                 <label class="block text-sm font-medium mb-1">Monto</label>
                 <UInput v-model="newSub.amount" type="number" min="0.01" step="0.01" required>
-                  <template #leading><span class="text-gray-500 text-sm">€</span></template>
+                  <template #leading><span class="text-gray-500 text-sm">S/</span></template>
                 </UInput>
               </div>
               <div>

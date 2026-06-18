@@ -49,7 +49,7 @@ const resetToData = () => {
 }
 
 const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(value)
+  return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
 }
 
 const isDeficit = computed(() => (Number(projectedExpense.value) || 0) > (Number(projectedIncome.value) || 0))
@@ -70,7 +70,7 @@ const chartData = computed(() => {
 
   for (let i = 1; i <= monthsToProject.value; i++) {
     const d = new Date(today.getFullYear(), today.getMonth() + i, 1)
-    const labelStr = new Intl.DateTimeFormat('es-ES', { month: 'short', year: '2-digit' }).format(d)
+    const labelStr = new Intl.DateTimeFormat('es-PE', { month: 'short', year: '2-digit' }).format(d)
     labels.push(labelStr.charAt(0).toUpperCase() + labelStr.slice(1))
     
     capital += monthlyNet
@@ -105,7 +105,7 @@ const chartOptions = {
             label += ': ';
           }
           if (context.parsed.y !== null) {
-            label += new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(context.parsed.y);
+            label += new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(context.parsed.y);
           }
           return label;
         }
@@ -116,7 +116,7 @@ const chartOptions = {
     y: {
       ticks: {
         callback: function(value: any) {
-          return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', notation: 'compact' }).format(value)
+          return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', notation: 'compact' }).format(value)
         }
       }
     }
@@ -155,7 +155,7 @@ const chartOptions = {
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Capital Actual</label>
             <UInput v-model="currentCapital" type="number" step="10" @input="onUserEdit">
-              <template #leading><span class="text-gray-500 sm:text-sm">€</span></template>
+              <template #leading><span class="text-gray-500 sm:text-sm">S/</span></template>
             </UInput>
             <p class="text-xs text-gray-500 mt-1">Punto de partida.</p>
           </div>
@@ -163,14 +163,14 @@ const chartOptions = {
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Ingreso Mensual Estimado</label>
             <UInput v-model="projectedIncome" type="number" step="10" @input="onUserEdit">
-              <template #leading><span class="text-gray-500 sm:text-sm">€</span></template>
+              <template #leading><span class="text-gray-500 sm:text-sm">S/</span></template>
             </UInput>
           </div>
 
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Gasto Mensual Estimado</label>
             <UInput v-model="projectedExpense" type="number" step="10" @input="onUserEdit">
-              <template #leading><span class="text-gray-500 sm:text-sm">€</span></template>
+              <template #leading><span class="text-gray-500 sm:text-sm">S/</span></template>
             </UInput>
           </div>
 

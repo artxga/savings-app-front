@@ -67,7 +67,7 @@ export const useTransactions = () => {
         if (percentage > 1) {
           toast.add({
             title: '¡Presupuesto Excedido!',
-            description: `Has superado tu límite de ${budgetLimit}€ para ${newTransaction.category}. Llevas gastado ${totalSpent}€.`,
+            description: `Has superado tu límite de ${budgetLimit}S/ para ${newTransaction.category}. Llevas gastado ${totalSpent}S/.`,
             color: 'red',
             icon: 'i-lucide-alert-triangle'
           })
@@ -87,7 +87,7 @@ export const useTransactions = () => {
       if (pacing.isPacingToDeficit && pacing.totalExpenses > 0) {
          toast.add({
             title: '¡Ritmo de Gasto Peligroso!',
-            description: `Tu gasto promedio diario es de ${Math.round(pacing.dailyExpenseAvg)}€. Si sigues así, gastarás ${Math.round(pacing.projectedEndOfMonthExpense)}€ al final del mes, superando tus ingresos esperados.`,
+            description: `Tu gasto promedio diario es de ${Math.round(pacing.dailyExpenseAvg)}S/. Si sigues así, gastarás ${Math.round(pacing.projectedEndOfMonthExpense)}S/ al final del mes, superando tus ingresos esperados.`,
             color: 'red',
             icon: 'i-lucide-trending-down',
             timeout: 8000

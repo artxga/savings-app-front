@@ -18,7 +18,7 @@ const monthOptions = computed(() => {
   const d = new Date()
   for (let i = 0; i < 12; i++) {
     const value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-    const label = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' }).format(d)
+    const label = new Intl.DateTimeFormat('es-PE', { month: 'long', year: 'numeric' }).format(d)
     // capitalize first letter
     const capitalizedLabel = label.charAt(0).toUpperCase() + label.slice(1)
     
@@ -38,7 +38,7 @@ const monthlyTransactions = computed(() => {
 const currentPacing = computed(() => getMonthlyPacing(selectedMonth.value))
 
 const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(value)
+  return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value)
 }
 
 const isModalOpen = ref(false)
