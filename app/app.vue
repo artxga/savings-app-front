@@ -27,6 +27,7 @@ const isSidebarOpen = ref(false)
 
 const links = [
   { label: 'Panel de Control', icon: 'i-lucide-layout-dashboard', to: '/' },
+  { label: 'Analíticas', icon: 'i-lucide-bar-chart-2', to: '/analytics' },
   { label: 'Presupuestos', icon: 'i-lucide-wallet', to: '/budgets' },
   { label: 'Proyecciones', icon: 'i-lucide-line-chart', to: '/projections' },
 ]
@@ -57,13 +58,12 @@ const links = [
             {{ link.label }}
           </UButton>
         </nav>
-        <div class="p-4 border-t border-gray-200 dark:border-gray-800 flex justify-between items-center">
-          <span class="text-sm text-gray-500">Tema visual</span>
-          <UColorModeButton />
+        <div class="p-4 border-t border-gray-200 dark:border-gray-800 flex flex-col items-center">
+          <!-- Optional Sidebar footer content -->
         </div>
       </aside>
 
-      <!-- Mobile Header & Sidebar -->
+      <!-- Mobile Sidebar Overlay & Navigation -->
       <div class="md:hidden flex flex-col w-full absolute inset-0 pointer-events-none z-50" v-if="isSidebarOpen">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/50 pointer-events-auto backdrop-blur-sm transition-opacity" @click="isSidebarOpen = false"></div>
@@ -90,19 +90,29 @@ const links = [
 
       <!-- Main Content -->
       <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
-        <!-- Mobile Header -->
-        <header class="md:hidden flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-          <div class="flex items-center gap-2">
+        
+        <!-- Global Header (Mobile & Desktop) -->
+        <header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 sticky top-0 z-30">
+          <!-- Mobile Brand (Hidden on Desktop) -->
+          <div class="md:hidden flex items-center gap-2">
             <UIcon name="i-lucide-piggy-bank" class="w-6 h-6 text-primary" />
             <span class="font-bold text-lg">Mis Ahorros</span>
           </div>
-          <div class="flex items-center gap-2">
+
+          <!-- Desktop Title/Breadcrumb Area -->
+          <div class="hidden md:block">
+            <h2 class="text-lg font-medium text-gray-700 dark:text-gray-200">Resumen Financiero</h2>
+          </div>
+
+          <!-- Header Actions -->
+          <div class="flex items-center gap-3">
             <UColorModeButton />
-            <UButton icon="i-lucide-menu" color="gray" variant="ghost" @click="isSidebarOpen = true" />
+            <UAvatar icon="i-lucide-user" size="sm" alt="Usuario" class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300" />
+            <UButton class="md:hidden" icon="i-lucide-menu" color="gray" variant="ghost" @click="isSidebarOpen = true" />
           </div>
         </header>
 
-        <main class="flex-1 overflow-y-auto">
+        <main class="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-950">
           <NuxtPage />
         </main>
       </div>
