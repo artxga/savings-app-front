@@ -64,7 +64,7 @@ const chartOptions = {
           let label = context.label || '';
           if (label) label += ': ';
           if (context.parsed !== null) {
-            label += new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(context.parsed);
+            label += new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(context.parsed);
           }
           return label;
         }

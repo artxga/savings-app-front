@@ -61,7 +61,7 @@ const onSubmit = () => {
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Monto</label>
           <UInput v-model="amount" type="number" step="0.01" min="0" placeholder="0.00" required>
             <template #leading>
-              <span class="text-gray-500 dark:text-gray-400 sm:text-sm">€</span>
+              <span class="text-gray-500 dark:text-gray-400 sm:text-sm">S/</span>
             </template>
           </UInput>
         </div>
