@@ -27,8 +27,10 @@ const isSidebarOpen = ref(false)
 
 const links = [
   { label: 'Panel de Control', icon: 'i-lucide-layout-dashboard', to: '/' },
+  { label: 'Suscripciones', icon: 'i-lucide-repeat', to: '/subscriptions' },
   { label: 'Analíticas', icon: 'i-lucide-bar-chart-2', to: '/analytics' },
   { label: 'Presupuestos', icon: 'i-lucide-wallet', to: '/budgets' },
+  { label: 'Metas', icon: 'i-lucide-target', to: '/goals' },
   { label: 'Proyecciones', icon: 'i-lucide-line-chart', to: '/projections' },
 ]
 </script>

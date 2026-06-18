@@ -60,7 +60,7 @@ const chartOptions = {
           let label = context.dataset.label || '';
           if (label) label += ': ';
           if (context.parsed.y !== null) {
-            label += new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(context.parsed.y);
+            label += new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(context.parsed.y);
           }
           return label;
         }
@@ -71,7 +71,7 @@ const chartOptions = {
     y: {
       ticks: {
         callback: function(value: any) {
-          return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', notation: 'compact' }).format(value)
+          return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN', notation: 'compact' }).format(value)
         }
       }
     }
