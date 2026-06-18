@@ -49,7 +49,7 @@ const onSubmit = () => {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Tipo</label>
-          <USelect v-model="type" :options="typeOptions" option-attribute="label" value-attribute="value" />
+          <USelect v-model="type" :items="typeOptions" />
         </div>
         
         <div>
@@ -68,7 +68,7 @@ const onSubmit = () => {
 
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Categoría</label>
-          <USelect v-model="category" :options="categoryOptions" required placeholder="Selecciona..." />
+          <USelect v-model="category" :items="categoryOptions" required placeholder="Selecciona..." />
         </div>
 
         <div class="md:col-span-2">

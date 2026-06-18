@@ -28,12 +28,18 @@ const monthOptions = computed(() => {
   return options
 })
 
-const { transactions, addTransaction, removeTransaction } = useTransactions()
+const { transactions, addTransaction, removeTransaction, getMonthlyPacing } = useTransactions()
 
 // Filter transactions by selected month
 const monthlyTransactions = computed(() => {
   return transactions.value.filter(t => t.date.startsWith(selectedMonth.value))
 })
+
+const currentPacing = computed(() => getMonthlyPacing(selectedMonth.value))
+
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(value)
+}
 
 const isModalOpen = ref(false)
 
@@ -56,9 +62,7 @@ const handleAddTransaction = (tx: any) => {
       <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
         <USelect 
           v-model="selectedMonth" 
-          :options="monthOptions" 
-          option-attribute="label"
-          value-attribute="value"
+          :items="monthOptions" 
           icon="i-lucide-calendar" 
           size="lg"
           class="w-full sm:w-64"
@@ -81,6 +85,20 @@ const handleAddTransaction = (tx: any) => {
 
     <!-- Summary Cards -->
     <SummaryCards :transactions="monthlyTransactions" />
+
+    <!-- Pacing Alert Banner -->
+    <div v-if="currentPacing.isPacingToDeficit && currentPacing.totalExpenses > 0" class="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex flex-col sm:flex-row items-start sm:items-center gap-3">
+      <div class="p-2 bg-red-100 dark:bg-red-900/50 rounded-full shrink-0">
+        <UIcon name="i-lucide-trending-down" class="w-5 h-5 text-red-600 dark:text-red-400" />
+      </div>
+      <div>
+        <h4 class="font-bold text-red-800 dark:text-red-300">Ritmo de Gasto Peligroso</h4>
+        <p class="text-sm text-red-700 dark:text-red-400 mt-1">
+          Estás gastando a un ritmo de <strong>{{ formatCurrency(currentPacing.dailyExpenseAvg) }} por día</strong> este mes. 
+          De seguir así, proyectamos que gastarás <strong>{{ formatCurrency(currentPacing.projectedEndOfMonthExpense) }}</strong>, superando tus ingresos. ¡Ten cuidado!
+        </p>
+      </div>
+    </div>
 
     <!-- Main Content Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
